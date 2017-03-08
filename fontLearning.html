@@ -6,9 +6,9 @@
     <link rel="stylesheet" href="css/fontLearning.css">
     <script src="js/brain-0.6.3.js"></script>
     <script src="js/jquery-1.4.2.min.js"> </script>
-    <script src="js/fontLearning.js">
-
-    </script>
+    <script src="js/fontLearning.js"></script>
+    <script src="js/font.js"></script>
+    <!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family"> -->
   </head>
   <body>
     <div class="container">
@@ -18,11 +18,12 @@
           <input type="text" name="fontName" id="fontName" class="font-field" placeholder="Enter Font name you want to show your text " value="">
           <button type="button" name="changeFontBtn" class="font-btn" id="changeFontBtn" onclick="fontPairing();" onkeypress="fontPairing();">Change Font</button>
         </div>
-        <p class="center">This is just paragraph for make changing its font</p>
       </div>
       <p id="p1"></p>
       <div class="color center" id="color1">
         <p id="result"></p>
+        <h2 id="writtenHeading"></h2>
+        <p id="writtenText"></p>
       </div>
   </div>
   </body>

@@ -25,7 +25,7 @@ network.train([
 });
 
   function getFont(fontCode) {
-    return fonts[Math.ceil(network.run(fontCode).font * 10)];
+    return fonts[Math.ceil(network.run(fontCode).font * fonts.length)];
   }
 
   function getFontIndex(fontName){
@@ -35,22 +35,25 @@ network.train([
   }
 
   function fontPairing() {
-      var results = [];
+    var results = [];
     var fontName= document.getElementById("fontName").value;
     var fontIndex= getFontIndex(fontName);
     var result= document.getElementById("result");
     if(!(fontIndex == "undefined")){
-      console.log(fontIndex,"mmmm");
-          var getFontCode= fontIndex/10;
-          var fontCode = {fontCode: getFontCode}
-          var txt = getFont(fontCode);
-          console.log("chalda");
-          results.push(fonts[fontIndex] + " : "  + txt);
+      var getFontCode= fontIndex/fonts.length;
+      var fontCode = {fontCode: getFontCode}
+      var txt = getFont(fontCode);
+      results.push(fonts[fontIndex] + " : "  + txt);
       result.setAttribute("class"," ");
       result.innerHTML = results.join("<br>");
+      var fontHeading= document.getElementById("writtenHeading");
+      fontHeading.setAttribute("style","font-family :" + fonts[fontIndex]);
+      fontHeading.innerHTML= "Heading is written in " + fonts[fontIndex] + " font";
+      var fontText= document.getElementById("writtenText");
+      fontText.setAttribute("style","font-family :" + txt);
+      fontText.innerHTML= "Paragraph is written in " + txt + " font";
     }
     else {
-
       result.setAttribute("class","alert");
       result.innerHTML = "You Have entered wrong Font, please Recheck!";
     }
