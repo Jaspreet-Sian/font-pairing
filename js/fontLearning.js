@@ -14,8 +14,8 @@ var fonts = [
 ];
 network.train([
   {input: {fontCode: 0}, output: {font : 0} },
-  {input : {fontCode: 0.6}, output: {font : 1} },
-  {input : {fontCode: 1}, output: {font : 1} }],
+  {input : {fontCode: 0.6}, output: {font : 0.9} },
+  {input : {fontCode: 1}, output: {font : 0.9} }],
 {
   errorThresh : 0.005,
   iterations : 20000,
@@ -25,7 +25,7 @@ network.train([
 });
 
   function getFont(fontCode) {
-    return fonts[Math.ceil(network.run(fontCode).font * fonts.length)];
+    return fonts[Math.floor(network.run(fontCode).font * fonts.length)];
   }
 
   function getFontIndex(fontName){
@@ -43,6 +43,7 @@ network.train([
       var getFontCode= fontIndex/fonts.length;
       var fontCode = {fontCode: getFontCode}
       var txt = getFont(fontCode);
+      console.log(txt);
       results.push(fonts[fontIndex] + " : "  + txt);
       result.setAttribute("class"," ");
       result.innerHTML = results.join("<br>");
