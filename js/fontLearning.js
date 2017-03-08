@@ -24,21 +24,34 @@ network.train([
   learningRate : 0.3
 });
 
-  var output = network.run({fontCode: 0.9});
-  console.log(output,"jj");
-
   function getFont(fontCode) {
     return fonts[Math.ceil(network.run(fontCode).font * 10)];
   }
 
-  function sample() {
+  function getFontIndex(fontName){
+    console.log(fontName,"name");
+    var fontIndex= fonts.indexOf(fontName);
+    return fontIndex == -1 ? "undefined" : fontIndex;
+  }
+
+  function fontPairing() {
       var results = [];
-      for (var i = 0; i < 50; i++) {
-          var getFontCode= Math.random();
+    var fontName= document.getElementById("fontName").value;
+    var fontIndex= getFontIndex(fontName);
+    var result= document.getElementById("result");
+    if(!(fontIndex == "undefined")){
+      console.log(fontIndex,"mmmm");
+          var getFontCode= fontIndex/10;
           var fontCode = {fontCode: getFontCode}
           var txt = getFont(fontCode);
+          console.log("chalda");
+          results.push(fonts[fontIndex] + " : "  + txt);
+      result.setAttribute("class"," ");
+      result.innerHTML = results.join("<br>");
+    }
+    else {
 
-          results.push(fonts[Math.ceil(getFontCode * 10)] + " : "  + txt);
-      }
-      return results.join("<br>");
+      result.setAttribute("class","alert");
+      result.innerHTML = "You Have entered wrong Font, please Recheck!";
+    }
   }
