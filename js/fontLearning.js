@@ -36,7 +36,8 @@ network.train([
   function fontPairing() {
     var results = [];
     var fontName= document.getElementById("fontName").value;
-    var fontIndex= getFontIndex(fontName);
+    // console.log(fontName.toUpperCase().charAt(0) + fontName.substring(1) ,"cccc");
+    var fontIndex= getFontIndex(fontName.toUpperCase().charAt(0) + fontName.substring(1));
     var result= document.getElementById("result");
     if(!(fontIndex == "undefined")){
       var getFontCode= fontIndex/fonts.length;
@@ -56,5 +57,7 @@ network.train([
     else {
       result.setAttribute("class","alert");
       result.innerHTML = "You Have entered wrong Font, please Recheck!";
+      document.getElementById("writtenHeading").innerHTML="";
+      document.getElementById("writtenText").innerHTML= "";
     }
   }
