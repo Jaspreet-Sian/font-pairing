@@ -14,6 +14,8 @@ var fonts = [
 ];
 network.train([
   {input: {fontCode: 0}, output: {font : 0} },
+  {input: {fontCode: 0.01}, output: {font : 0.05}},
+  {input: {fontCode: 0.1}, output: {font : 0.1}},
   {input : {fontCode: 1}, output: {font : 0.9} }],
 {
   errorThresh : 0.005,
